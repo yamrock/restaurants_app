@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <h1> Are you sure you want to delete {{current_item.name}} </h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class = flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+
+    <form action = "{{url_for('deleteMenuItem', restaurant_id = restaurant_id, menu_id = menu_id)}}" method = 'POST'>
+       <input type = "submit" value = "Yes"></form>
+     <a href = {{url_for('menu_list', restaurant_id = restaurant_id)}}> Cancel </a>
+    </form>
+  </body>
+</html>

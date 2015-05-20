@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <h1> Edit Menu Item </h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class = flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form action = "{{url_for('editMenuItem', restaurant_id = restaurant_id, menu_id = menu_id)}}" method = 'POST'>
+      Name: <input type = 'text' size = '30' name = 'new_item' placeholder = {{current_item.name}}><br>
+      Item Type: <input name = "item_type" value = "Appetizer" type = "radio"> Appetizer  
+                 <input name = "item_type" value = "Entree" type = "radio"> Entree  
+                 <input name = "item_type" value = "Dessert" type = "radio"> Dessert <br>  
+     Description: <input name = "item_description"  type = "text" placeholder = {{current_item.description}}>  <br>  
+     Item Price: <input name = "price" type = "text" placeholder = {{current_item.price}} <br> <br> <br>
+       <input type = "submit" value = "Submit"></form>
+     <a href = {{url_for('menu_list', restaurant_id = restaurant_id)}}> Cancel </a>
+    </form>
+  </body>
+</html>
